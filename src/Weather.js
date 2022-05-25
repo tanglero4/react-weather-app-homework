@@ -10,7 +10,6 @@ export default function Weather(props){
 
 
     function handleResponse(response) {
-        console.log(response.data);
         setWeatherData({
             ready: true,
             coordinates: response.data.coord,
@@ -20,7 +19,6 @@ export default function Weather(props){
             wind: response.data.wind.speed,
             icon:response.data.weather[0].icon,
             description:response.data.weather[0].description,
-
         });
           }
           function search(){
@@ -29,14 +27,13 @@ export default function Weather(props){
             axios.get(apiURL).then(handleResponse);
           }
           function handleSubmit(event){
-event.preventDefault();
-search(city);
+        event.preventDefault();
+        search();
           }
 
 function handleCityChange(event){
 setCity(event.target.value);
 }
-
 
       if (weatherData.ready){
     return(
